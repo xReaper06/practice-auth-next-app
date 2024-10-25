@@ -1,6 +1,11 @@
 import React from 'react'
 import SignInButton from '../signin_button/SignInButton'
-const NavBar = () => {
+import Link from 'next/link'
+import { authOptions } from '@/lib/auth'
+import { getServerSession } from 'next-auth'
+import SignOutBtn from '../buttons/SignOutBtn'
+const NavBar = async() => {
+  const session = await getServerSession(authOptions)
   return (
     <div className="navbar bg-base-100">
     <div className="navbar-start">
@@ -20,10 +25,12 @@ const NavBar = () => {
           </svg>
         </div>
       </div>
-      <a className="btn btn-ghost text-xl">Sample NExt Auth App</a>
+      {session?.user ? (<Link href="/admin" className="btn btn-ghost text-xl">Admin Dashboad</Link>):(<a className="btn btn-ghost text-xl">Sample NExt Auth App</a>)}   
     </div>
     <div className="navbar-end">
-      <SignInButton/>
+      {session?.user ? (<SignOutBtn/>):(
+        <SignInButton/>
+      )}
     </div>
   </div>
   )
