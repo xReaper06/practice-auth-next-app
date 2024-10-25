@@ -30,6 +30,8 @@ const SignInForm = () => {
   });
 
   const handleSignInForm = async(data: SignInFormData) => {
+    setStatus(''); // Reset the status before submission
+    setMessage(''); // Reset the message before submission
     const signInData = await signIn('credentials', {
       email: data.email,
       password: data.password,
@@ -74,7 +76,7 @@ const SignInForm = () => {
           )}
     </form>
     <div className="card-actions flex justify-between items-center mt-3">
-        <p className='mr-3'>I don't have an <Link href="/auth/sign-up" className="link link-primary">account</Link> yet.</p>
+        <p className='mr-3'>I don't have an <Link href="/sign-up" className="link link-primary">account</Link> yet.</p>
       <button className="btn btn-neutral" onClick={handleSubmit(handleSignInForm)}>Sign in</button>
     </div>
   </div>

@@ -6,7 +6,7 @@ const SignOutBtn = () => {
   return (
     <button className='btn btn-error' onClick={()=> signOut({
         redirect:true,
-        callbackUrl:`${window.location.origin}/auth/sign-in`
+        callbackUrl:`${window.location.origin}/sign-in`
     })}>Sign Out</button>
   )
 }

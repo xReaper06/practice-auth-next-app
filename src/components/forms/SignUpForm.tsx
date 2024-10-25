@@ -49,7 +49,7 @@ const router = useRouter()
         setMessage(message)
         setStatus('alert alert-success')
         setTimeout(()=>{
-          router.push('/auth/sign-in')
+          router.push('/sign-in')
         },1000)
       }else{
         const errorData = await res.json();
